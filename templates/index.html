@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV Processor</title>
-    <!-- Add some basic styling, if needed. For simplicity, I'm using plain CSS here. -->
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -21,10 +20,14 @@
     </style>
 </head>
 <body>
-    <h2>Assignment Rubrics Generator</h2>
+    <h2>Assignment/Presentation Rubrics Generator</h2>
     <form action="/process" method="post" enctype="multipart/form-data">
-        <label for="csv-file">Select a CSV or XLSX file:</label>
-        <input type="file" id="csv-file" name="file" accept=".csv, .xlsx" required>
+        <label for="csv-file1">Upload assignment XLSX file:</label>
+        <input type="file" id="csv-file1" name="file1" accept=".csv, .xlsx" required>
+
+        <label for="csv-file2">Upload presentation XLSX file:</label>
+        <input type="file" id="csv-file2" name="file2" accept=".csv, .xlsx">
+        
         <input type="submit" value="Process File">
     </form>
 </body>
