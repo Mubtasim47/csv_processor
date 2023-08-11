@@ -20,15 +20,21 @@
     </style>
 </head>
 <body>
-    <h2>Assignment/Presentation Rubrics Generator</h2>
+    <h2>Assignment/Rubrics Rubrics Generator</h2>
+    
+    <!-- First CSV/XLSX form -->
     <form action="/process" method="post" enctype="multipart/form-data">
-        <label for="csv-file1">Upload assignment XLSX file:</label>
-        <input type="file" id="csv-file1" name="file1" accept=".csv, .xlsx" required>
-
-        <label for="csv-file2">Upload presentation XLSX file:</label>
-        <input type="file" id="csv-file2" name="file2" accept=".csv, .xlsx">
-        
-        <input type="submit" value="Process File">
+        <label for="csv-file">Upload the assignment file:</label>
+        <input type="file" id="csv-file" name="file1" accept=".csv, .xlsx" required>
+        <input type="submit" value="Process First File">
+    </form>
+    
+    <!-- Second CSV/XLSX form -->
+    <br>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <label for="csv-file-v2">Upload the presentation file:</label>
+        <input type="file" id="csv-file-v2" name="file2" accept=".csv, .xlsx" required>
+        <input type="submit" value="Process Second File">
     </form>
 </body>
 </html>
