@@ -4,15 +4,17 @@ import io
 import os
 import openpyxl
 import random
+import time  # For the delay
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')  # Make sure your HTML file is named 'index.html' and placed inside a folder named 'templates' in the same directory as your Flask app.
 
 @app.route('/process', methods=['POST'])
 def process():
+    time.sleep(5)  # Simulate processing delay of 5 seconds
     file1 = request.files.get('file1')
     file2 = request.files.get('file2')
     if file1 and file1.filename != '':
@@ -49,6 +51,41 @@ def process_csv(file, version):
     else:
         return 'Unsupported file type', 400
 
+# Placeholder for processing dataframes
+def process_dataframe(df):
+    # Your processing logic for CSV version 1
+    return df
+
+def process_dataframe_v2(df):
+    # Your processing logic for CSV version 2
+    return df
+
+def generate_combinations(target_sum):
+    valid_combinations = []
+    for c in [0, 1]:
+        for d in [0, 1]:
+            for e in [0, 1, 2]:
+                for f in [0, 1]:
+                    if c + d + e + f == target_sum:
+                        valid_combinations.append((c, d, e, f))
+    if valid_combinations:
+        return random.choice(valid_combinations)
+    return None
+
+def generate_combinations_v2(target_sum):
+    valid_combinations = []
+    for c in [round(i*0.1, 2) for i in range(9)]:
+        for d in [round(i*0.1, 2) for i in range(9)]:
+            for e in [round(i*0.1, 2) for i in range(9)]:
+                for f in [round(i*0.1, 2) for i in range(9)]:
+                    for g in [round(i*0.1, 2) for i in range(33)]:
+                        for h in [round(i*0.1, 2) for i in range(17)]:
+                            if round(c + d + e + f + g + h, 2) == target_sum:
+                                valid_combinations.append((c, d, e, f, g, h))
+    if valid_combinations:
+        return random.choice(valid_combinations)
+    return None
+
 def process_xlsx(file, output_path):
     file.save(output_path)
     wb = openpyxl.load_workbook(output_path)
@@ -74,4 +111,4 @@ def process_xlsx_v2(file, output_path):
     wb.save(output_path)
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
