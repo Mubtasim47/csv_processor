@@ -74,12 +74,12 @@ def generate_combinations(target_sum):
 
 def generate_combinations_v2(target_sum):
     valid_combinations = []
-    for c in [round(i*0.1, 2) for i in range(9)]:
-        for d in [round(i*0.1, 2) for i in range(9)]:
-            for e in [round(i*0.1, 2) for i in range(9)]:
-                for f in [round(i*0.1, 2) for i in range(9)]:
-                    for g in [round(i*0.1, 2) for i in range(33)]:
-                        for h in [round(i*0.1, 2) for i in range(17)]:
+    for c in [round(i*0.1, 2) for i in range(1, 9)]:
+        for d in [round(i*0.1, 2) for i in range(1, 9)]:
+            for e in [round(i*0.1, 2) for i in range(1, 9)]:
+                for f in [round(i*0.1, 2) for i in range(1, 9)]:
+                    for g in [round(i*0.1, 2) for i in range(1, 33)]:
+                        for h in [round(i*0.1, 2) for i in range(1, 17)]:
                             if round(c + d + e + f + g + h, 2) == target_sum:
                                 valid_combinations.append((c, d, e, f, g, h))
     if valid_combinations:
